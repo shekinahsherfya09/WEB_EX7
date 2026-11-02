@@ -1,0 +1,519 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HealthCare - Hospital Management System</title>
+
+<style>
+
+/* GENERAL STYLING */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #f4f9fc;
+    color: #333;
+    line-height: 1.6;
+}
+
+header {
+    background: #087f8c;
+    color: white;
+    padding: 15px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+header h1 {
+    font-size: 26px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 12px;
+    font-weight: bold;
+}
+
+nav a:hover {
+    color: #b9f3f5;
+}
+
+/* HERO SECTION */
+.hero {
+    min-height: 400px;
+    background: linear-gradient(120deg, #087f8c, #35b8bd);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 50px 20px;
+}
+
+.hero h2 {
+    font-size: 42px;
+    margin-bottom: 15px;
+}
+
+.hero p {
+    font-size: 18px;
+    margin-bottom: 25px;
+}
+
+.btn {
+    display: inline-block;
+    background: white;
+    color: #087f8c;
+    padding: 12px 25px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background: #d8f4f4;
+}
+
+/* COMMON SECTIONS */
+section {
+    padding: 60px 8%;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 30px;
+    color: #087f8c;
+    margin-bottom: 30px;
+}
+
+/* ABOUT SECTION */
+.about {
+    text-align: center;
+}
+
+.about p {
+    max-width: 850px;
+    margin: auto;
+    font-size: 17px;
+}
+
+/* DEPARTMENTS */
+.department-container,
+.doctor-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 25px;
+}
+
+.department-card,
+.doctor-card {
+    background: white;
+    padding: 25px;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.1);
+    transition: 0.3s;
+}
+
+.department-card:hover,
+.doctor-card:hover {
+    transform: translateY(-7px);
+}
+
+.department-card h3,
+.doctor-card h3 {
+    color: #087f8c;
+    margin: 12px 0;
+}
+
+.department-icon {
+    font-size: 45px;
+}
+
+/* DOCTORS */
+.doctor-card img {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+/* FORMS */
+.form-section {
+    background: #e7f5f7;
+}
+
+.form-container {
+    max-width: 600px;
+    background: white;
+    padding: 30px;
+    margin: auto;
+    border-radius: 10px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.1);
+}
+
+.form-container input,
+.form-container select,
+.form-container textarea {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0 18px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.form-container label {
+    font-weight: bold;
+}
+
+.form-container button {
+    width: 100%;
+    background: #087f8c;
+    color: white;
+    padding: 13px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.form-container button:hover {
+    background: #05636d;
+}
+
+/* CONTACT */
+.contact {
+    text-align: center;
+}
+
+.contact p {
+    margin: 10px;
+    font-size: 17px;
+}
+
+/* FOOTER */
+footer {
+    background: #075b65;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+/* RESPONSIVE DESIGN */
+@media(max-width: 768px) {
+
+    header {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    nav {
+        text-align: center;
+    }
+
+    nav a {
+        display: inline-block;
+        margin: 5px;
+    }
+
+    .hero h2 {
+        font-size: 30px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header>
+    <h1>🏥 HealthCare Hospital</h1>
+
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#departments">Departments</a>
+        <a href="#doctors">Doctors</a>
+        <a href="#appointment">Appointment</a>
+        <a href="#contact">Contact</a>
+    </nav>
+</header>
+
+<!-- HOME SECTION -->
+<section class="hero" id="home">
+    <div>
+        <h2>Your Health, Our Priority</h2>
+        <p>Providing Quality Healthcare and Compassionate Medical Services.</p>
+        <a href="#appointment" class="btn">Book Appointment</a>
+    </div>
+</section>
+
+<!-- ABOUT SECTION -->
+<section class="about" id="about">
+
+    <h2 class="section-title">About Our Hospital</h2>
+
+    <p>
+        HealthCare Hospital is committed to providing excellent medical
+        services with modern technology and experienced doctors.
+        Our mission is to improve the health and well-being of every
+        patient through quality treatment and compassionate care.
+    </p>
+
+</section>
+
+<!-- DEPARTMENTS SECTION -->
+<section id="departments">
+
+    <h2 class="section-title">Our Departments</h2>
+
+    <div class="department-container">
+
+        <div class="department-card">
+            <div class="department-icon">❤️</div>
+            <h3>Cardiology</h3>
+            <p>Specialized treatment and care for heart-related diseases.</p>
+        </div>
+
+        <div class="department-card">
+            <div class="department-icon">🧠</div>
+            <h3>Neurology</h3>
+            <p>Diagnosis and treatment of brain and nervous system disorders.</p>
+        </div>
+
+        <div class="department-card">
+            <div class="department-icon">🦷</div>
+            <h3>Dental Care</h3>
+            <p>Complete dental care and oral health services.</p>
+        </div>
+
+        <div class="department-card">
+            <div class="department-icon">👶</div>
+            <h3>Pediatrics</h3>
+            <p>Special medical care for infants and children.</p>
+        </div>
+
+        <div class="department-card">
+            <div class="department-icon">🩺</div>
+            <h3>General Medicine</h3>
+            <p>General health checkups and medical consultations.</p>
+        </div>
+
+        <div class="department-card">
+            <div class="department-icon">🦴</div>
+            <h3>Orthopedics</h3>
+            <p>Treatment for bone, joint and muscle problems.</p>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- DOCTORS SECTION -->
+<section id="doctors">
+
+    <h2 class="section-title">Our Experienced Doctors</h2>
+
+    <div class="doctor-container">
+
+        <div class="doctor-card">
+            <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=300" alt="Doctor">
+            <h3>Dr. Arun Kumar</h3>
+            <p>Cardiologist</p>
+            <p>10 Years Experience</p>
+        </div>
+
+        <div class="doctor-card">
+            <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=300" alt="Doctor">
+            <h3>Dr. Priya Sharma</h3>
+            <p>Neurologist</p>
+            <p>8 Years Experience</p>
+        </div>
+
+        <div class="doctor-card">
+            <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=300" alt="Doctor">
+            <h3>Dr. Rahul Dev</h3>
+            <p>General Physician</p>
+            <p>12 Years Experience</p>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- APPOINTMENT FORM -->
+<section class="form-section" id="appointment">
+
+    <h2 class="section-title">Book an Appointment</h2>
+
+    <div class="form-container">
+
+        <form id="appointmentForm">
+
+            <label>Patient Name</label>
+            <input type="text" id="patientName" placeholder="Enter your name" required>
+
+            <label>Email Address</label>
+            <input type="email" id="email" placeholder="Enter your email" required>
+
+            <label>Phone Number</label>
+            <input type="tel" id="phone" placeholder="Enter phone number"
+                   pattern="[0-9]{10}" maxlength="10" required>
+
+            <label>Select Department</label>
+            <select id="department" required>
+                <option value="">Choose Department</option>
+                <option>Cardiology</option>
+                <option>Neurology</option>
+                <option>Dental Care</option>
+                <option>Pediatrics</option>
+                <option>General Medicine</option>
+                <option>Orthopedics</option>
+            </select>
+
+            <label>Appointment Date</label>
+            <input type="date" id="date" required>
+
+            <label>Message</label>
+            <textarea id="message" rows="4"
+                      placeholder="Describe your problem"></textarea>
+
+            <button type="submit">Book Appointment</button>
+
+        </form>
+
+    </div>
+
+</section>
+
+<!-- PATIENT REGISTRATION -->
+<section id="registration">
+
+    <h2 class="section-title">Patient Registration</h2>
+
+    <div class="form-container">
+
+        <form id="registrationForm">
+
+            <label>Patient Name</label>
+            <input type="text" id="regName" placeholder="Enter patient name" required>
+
+            <label>Age</label>
+            <input type="number" id="age" placeholder="Enter age"
+                   min="1" max="120" required>
+
+            <label>Gender</label>
+            <select id="gender" required>
+                <option value="">Select Gender</option>
+                <option>Male</option>
+                <option>Female</option>
+                <option>Other</option>
+            </select>
+
+            <label>Address</label>
+            <textarea id="address" rows="3"
+                      placeholder="Enter address" required></textarea>
+
+            <label>Contact Number</label>
+            <input type="tel" id="regPhone" pattern="[0-9]{10}"
+                   maxlength="10" placeholder="Enter phone number" required>
+
+            <button type="submit">Register Patient</button>
+
+        </form>
+
+    </div>
+
+</section>
+
+<!-- CONTACT SECTION -->
+<section class="contact" id="contact">
+
+    <h2 class="section-title">Contact Us</h2>
+
+    <p>📍 Address: Main Road, Chennai, Tamil Nadu</p>
+    <p>📞 Phone: +91 9876543210</p>
+    <p>✉️ Email: healthcarehospital@gmail.com</p>
+    <p>⏰ Working Hours: Monday - Saturday, 9 AM - 8 PM</p>
+
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <p>&copy; 2026 HealthCare Hospital. All Rights Reserved.</p>
+    <p>Designed using HTML, CSS and JavaScript</p>
+</footer>
+
+<!-- JAVASCRIPT -->
+<script>
+
+// Set minimum appointment date to today
+document.getElementById("date").min =
+    new Date().toISOString().split("T")[0];
+
+// APPOINTMENT FORM VALIDATION
+document.getElementById("appointmentForm")
+.addEventListener("submit", function(event) {
+
+    event.preventDefault();
+
+    let name = document.getElementById("patientName").value;
+    let department = document.getElementById("department").value;
+    let date = document.getElementById("date").value;
+
+    alert(
+        "Appointment Booked Successfully!\n\n" +
+        "Patient Name: " + name +
+        "\nDepartment: " + department +
+        "\nAppointment Date: " + date
+    );
+
+    this.reset();
+
+    document.getElementById("date").min =
+        new Date().toISOString().split("T")[0];
+
+});
+
+// PATIENT REGISTRATION VALIDATION
+document.getElementById("registrationForm")
+.addEventListener("submit", function(event) {
+
+    event.preventDefault();
+
+    let name = document.getElementById("regName").value;
+    let age = document.getElementById("age").value;
+    let gender = document.getElementById("gender").value;
+
+    alert(
+        "Patient Registered Successfully!\n\n" +
+        "Patient Name: " + name +
+        "\nAge: " + age +
+        "\nGender: " + gender
+    );
+
+    this.reset();
+
+});
+
+</script>
+
+</body>
+</html>
+```
